@@ -5,32 +5,29 @@ from pymoo.algorithms.moo.nsga2 import NSGA2
 from pymoo.core.problem import ElementwiseProblem
 from pymoo.optimize import minimize
 from pymoo.visualization.scatter import Scatter
-
 from pymoo.algorithms.moo.nsga2 import NSGA2
-from pymoo.operators.crossover.sbx import SBX
-from pymoo.operators.mutation.pm import PM
-from pymoo.operators.sampling.rnd import FloatRandomSampling
-from pymoo.operators.crossover.pntx import TwoPointCrossover
-from pymoo.operators.sampling.rnd import IntegerRandomSampling
 
 from Crossover import MyCrossover
 from Mutation import MyMutation
+from Sampling import MySampling
 
 import Objective
 import Units
+import Units_Random
 
 class Problem(ElementwiseProblem):
 
     def __init__(self, army_info, benchmark_army, benchmark_army_info):
-        super().__init__(n_var=5, #Number of unique units
+        super().__init__(n_var=80, #Number of unique units
                          n_obj=2, 
-                         n_ieq_constr=6,
-                         xl=np.array([0, 0, 0, 0, 0]),
-                         xu=np.array([20, 20, 20, 20, 20]),
+                         n_ieq_constr=81,
+                         xl=np.array([0 for _ in range(80)]),
+                         xu=np.array([5 for _ in range(80)]),
                          type_var=np.int_)  
         self.army_info = army_info
         self.benchmark_army_info = benchmark_army_info
         self.benchmark_army = benchmark_army
+        self.max_cost = 3000
         self.c = 0
         self.V = 0
         self.l = 0
@@ -55,14 +52,14 @@ class Problem(ElementwiseProblem):
         for i, c_i in enumerate(self.army_info.cost_vector):
             cost += x[i] * c_i
             
-        g_i.append(cost - 1000)
+        g_i.append(cost - self.max_cost)
 
         out["F"] = [-army_strength, -unit_synergy]
         out["G"] = g_i
 
 
-SM = Units.Space_Marines()
-TY = Units.Tyranids()
+SM = Units_Random.Space_Marines(80)
+TY = Units_Random.Tyranids(90)
 problem = Problem(SM, (1, 2, 0, 0, 0), TY)
 
 def my_callback(algorithm):
@@ -74,22 +71,25 @@ def my_callback(algorithm):
     
 
 algorithm = NSGA2(
-    pop_size=30,
-    sampling=IntegerRandomSampling(),   # initialisiert mit Ganzzahlen
+    pop_size=60,
+    sampling=MySampling(problem.army_info.cost_vector, problem.army_info.limit_vector, problem.max_cost),   
     crossover=MyCrossover(),
-    mutation=MyMutation(),
+    mutation=MyMutation(problem.army_info.cost_vector, problem.army_info.limit_vector, problem.max_cost),
     eliminate_duplicates=True
 )
 
     
 res = minimize(problem,
                algorithm,
-               ("n_gen", 100),
+               ("n_gen", 300),
                callback = my_callback,
                verbose=False,
                seed=1)
 
-print("Best decision variables:", res.X)
+total_costs = np.sum(res.X * np.array(problem.army_info.cost_vector), axis=1)
+for i, cost in enumerate(total_costs):
+    
+    print(f"Individual {i}: {res.X[i]} -> Cost = {cost}")
 plot = Scatter()
 plot.add(res.F, edgecolor="red", facecolor="none")
 plot.show()

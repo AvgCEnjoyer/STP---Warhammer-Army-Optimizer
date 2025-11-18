@@ -29,7 +29,7 @@ class Space_Marines:
                 self.synergy_matrix[j][i] = self.synergy_matrix[i][j]
 
         self.limit_vector = tuple(unit["limit"] for unit in self.units_data)
-        self.cost_vector = tuple(random.randint(100, 600) for _ in range(n_units))
+        self.cost_vector = tuple(random.randint(50, 400) for _ in range(n_units))
 
 
 class Tyranids:
@@ -45,7 +45,10 @@ class Tyranids:
                 "strength": random.randint(2, 8),
                 "damage": random.randint(1, 3),
                 "save": random.randint(3, 6),
-                "toughness": random.randint(1, 6)
+                "toughness": random.randint(1, 6),
+                "limit": random.randint(1, 10)
             }
             for _ in range(n_units)
         ]
+        self.limit_vector = tuple(unit["limit"] for unit in self.units_data)
+        self.cost_vector = tuple(random.randint(100, 600) for _ in range(n_units))

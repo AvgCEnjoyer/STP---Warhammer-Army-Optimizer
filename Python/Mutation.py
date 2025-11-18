@@ -3,7 +3,7 @@ import numpy as np
 import random
 
 class MyMutation(Mutation):
-    def __init__(self, cost_vector, limit_vector, max_cost, prob=0.5):
+    def __init__(self, cost_vector, limit_vector, max_cost, prob=0.8):
         super().__init__()
         self.cost_vector = cost_vector
         self.limit_vector = limit_vector
@@ -14,7 +14,7 @@ class MyMutation(Mutation):
         Y = X.copy()
 
         for i in range(Y.shape[0]):  # alle Individuen
-            if random.random() < self.prob:
+            if random.random() > self.prob:
                 # 1. Zufälligen Index wählen
                 idx = random.randint(0, problem.n_var - 1)
 

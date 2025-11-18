@@ -28,7 +28,7 @@ def get_mu_sigma2(army, army_info, benchmark_army_info):
         benchmark_nosave = np.median([7-int(unit["save"]) for unit in benchmark_army_info.units_data])
         
         for i, a_i in enumerate(army):
-            n_i = army_info.units_data[i]["attacks"]
+            n_i = army_info.units_data[i]["attacks"] 
             q_i = (7-army_info.units_data[i]["hit"])/6 * (7-wound_table(army_info.units_data[i]["strength"], benchmark_toughness))/6 * benchmark_nosave/6 * army_info.units_data[i]["damage"]
             N_i = a_i * n_i
             mu_total += N_i * q_i

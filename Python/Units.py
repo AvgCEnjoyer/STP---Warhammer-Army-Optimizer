@@ -24,7 +24,6 @@ class Space_Marines:
         ]
         self.limit_vector = (1, 3, 2, 4, 2)
         self.cost_vector = (200, 250, 150, 300, 500)
-        self.benchmark_no_save = 3
         
 class Tyranids:
     def __init__(self):
@@ -40,5 +39,4 @@ class Tyranids:
                                 {"cost" : 0, "attacks" : 5, "hit" : 4, "strength" : 4, "damage" : 1, "save" : 3, "toughness" : 1},
                                 {"cost" : 0, "attacks" : 4, "hit" : 3, "strength" : 3, "damage" : 1, "save" : 5, "toughness" : 1}
                                 ]
-        self.benchmark_no_save = 3
         

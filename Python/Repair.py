@@ -9,30 +9,50 @@ class MyRepair(Repair):
         self.max_cost = max_cost
 
     def _do(self, problem, X, **kwargs):
-        # Prüfen, ob es ein Population-Objekt oder direkt ein Array ist
         if hasattr(X, "get"):
             X = X.get("X")
 
         repaired = []
         for x in X:
-            # Sicherstellen, dass alle Einträge im Limit liegen
+            # Clamp auf Limits
             x = np.clip(x, 0, self.limit_vector)
 
-            # Kosten prüfen
+            # Reduziere Kosten falls nötig
             total_cost = np.sum(x * self.cost_vector)
-            if total_cost > self.max_cost:
-                # Reduziere zufällig Einheiten, bis Budget passt
-                while total_cost > self.max_cost and np.any(x > 0):
-                    idx = np.random.choice(np.where(x > 0)[0])
-                    x[idx] -= 1
-                    total_cost = np.sum(x * self.cost_vector)
+            while total_cost > self.max_cost and np.any(x > 0):
+                candidates = np.where(x > 0)[0]
+                idx = np.random.choice(candidates)
+                max_reduction = min(2, x[idx])
+                
+                if max_reduction >= 1:
+                    reduction = np.random.randint(1, max_reduction + 1)
+                    x[idx] -= reduction
+                # sonst nichts tun, Schleife prüft total_cost erneut
+                
+                total_cost = np.sum(x * self.cost_vector)
 
+
+            # Optional: zufälliges Auffüllen für Vielfalt
+            remaining_budget = self.max_cost - np.sum(x * self.cost_vector)
+            if remaining_budget > 0:
+                candidates = np.where(x < self.limit_vector)[0]
+                np.random.shuffle(candidates)
+                for idx in candidates:
+                    cost = self.cost_vector[idx]
+                    max_add = min(self.limit_vector[idx] - x[idx], remaining_budget // cost)
+                    if max_add > 0:
+                        x[idx] += np.random.randint(0, max_add+1)
+                        remaining_budget -= cost * x[idx]
+                    if remaining_budget <= 0:
+                        break
+            for indx in range(len(x)):
+                x[indx] = int(x[indx])
             repaired.append(x)
 
         repaired = np.array(repaired)
 
-        # Wenn ursprüngliches Argument ein Population-Objekt war, setze zurück
         if "pop" in kwargs:
             kwargs["pop"].set("X", repaired)
             return kwargs["pop"]
         return repaired
+

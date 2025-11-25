@@ -19,20 +19,16 @@ import Units_Random
 class Problem(ElementwiseProblem):
 
     def __init__(self, army_info, benchmark_army, benchmark_army_info):
-        super().__init__(n_var=40, #Number of unique units
+        super().__init__(n_var=150, #Number of unique units
                          n_obj=2, 
-                         n_ieq_constr=41,
-                         xl=np.array([0 for _ in range(40)]),
-                         xu=np.array([5 for _ in range(40)]),
+                         n_ieq_constr=151,
+                         xl=np.array([0 for _ in range(150)]),
+                         xu=np.array([5 for _ in range(150)]),
                          type_var=np.int_)  
         self.army_info = army_info
         self.benchmark_army_info = benchmark_army_info
         self.benchmark_army = benchmark_army
         self.max_cost = 3000
-        self.c = 0
-        self.V = 0
-        self.l = 0
-
 
     def _evaluate(self, x, out, *args, **kwargs):
         
@@ -55,7 +51,7 @@ class Problem(ElementwiseProblem):
         for i, c_i in enumerate(self.army_info.cost_vector):
             cost += x[i] * c_i
         
-        g_i.append(cost - self.max_cost + factor * (cost - self.max_cost < 0))
+        g_i.append(cost - self.max_cost + factor * (cost - self.max_cost > 0))
 
         out["F"] = [-army_strength, -unit_synergy]
         out["G"] = g_i
@@ -64,13 +60,26 @@ class Problem(ElementwiseProblem):
 
 def get_algorithm(state = 0):
     import time
+    from pymoo.operators.sampling.rnd import IntegerRandomSampling
+    from pymoo.operators.crossover.pntx import TwoPointCrossover
+    from pymoo.operators.mutation.pm import PM
+    
+    from pymoo.operators.crossover.hux import HalfUniformCrossover
+    
+    #sample = MySampling(problem.army_info.cost_vector, problem.army_info.limit_vector, problem.max_cost)  
+    sample = IntegerRandomSampling()
+    
+    repair = MyRepair(problem.army_info.cost_vector,
+                    problem.army_info.limit_vector,
+                    problem.max_cost)
     
     algorithm = NSGA2(
-        pop_size=30,
-        sampling=MySampling(problem.army_info.cost_vector, problem.army_info.limit_vector, problem.max_cost),   
-        crossover=MyCrossover(),
+        pop_size=70,
+        sampling=sample,   
+        crossover=MyCrossover(lambda_factor=1.5),
         mutation=MyMutation(problem.army_info.cost_vector, problem.army_info.limit_vector, problem.max_cost),
-        eliminate_duplicates=True
+        repair= repair,
+        eliminate_duplicates=False
     )
     
     if state == 0:
@@ -78,22 +87,29 @@ def get_algorithm(state = 0):
         time.sleep(1)
         return algorithm
     
-    from pymoo.operators.sampling.rnd import IntegerRandomSampling
-    from pymoo.operators.crossover.pntx import TwoPointCrossover
-    from pymoo.operators.mutation.pm import PM
-
-    repair = MyRepair(problem.army_info.cost_vector,
-                    problem.army_info.limit_vector,
-                    problem.max_cost)
+    mutation = PM(prob=0.8, eta=20, at_least_once=True)
+    mutation.integer_mask = np.ones(150, dtype=bool)
     
     algorithm = NSGA2(
-        pop_size=300,
+        pop_size=70,
         sampling=IntegerRandomSampling(),
         crossover=TwoPointCrossover(),
-        mutation=PM(prob=0.1),
+        mutation=mutation,
         repair=repair,
         eliminate_duplicates=True
     )
+    
+    '''pop = IntegerRandomSampling().do(problem, 10)
+    print("Before repair:")
+    for ind in pop:
+        print(ind.X)
+
+    repair.do(problem, pop)
+
+    print("After repair:")
+    for ind in pop:
+        print(ind.X)'''
+    
     
     if state == 1:
         print("Using random algorithm")
@@ -110,10 +126,10 @@ if __name__ == "__main__":
         if "algorithm" in key:
             state = int(args[indx + 1])
     
-    SM = Units_Random.Space_Marines(40)
-    TY = Units_Random.Tyranids(40)
-    problem = Problem(SM, (1, 2, 0, 0, 0), TY)
-    algorithm = get_algorithm(state)
+    SM = Units_Random.Space_Marines(150)
+    TY = Units_Random.Tyranids(150)
+    problem = Problem(SM, (1, 2, 8, 2, 1), TY)
+    algorithm = get_algorithm(state = 0)
 
     def my_callback(algorithm):
         # Alle Fitnesswerte der aktuellen Population
@@ -124,11 +140,38 @@ if __name__ == "__main__":
         
     res = minimize(problem,
                 algorithm,
-                ("n_gen", 100),
+                ("n_gen", 300),
                 callback = my_callback,
                 verbose=False,
                 seed=1)
 
+    print("Unique X:", np.unique(res.X, axis=0).shape[0])
+    print("Unique F:", np.unique(res.F, axis=0).shape[0])
+    total_costs = np.sum(res.X * np.array(problem.army_info.cost_vector), axis=1)
+    for i, cost in enumerate(total_costs):
+        
+        print(f"Individual {i}: {res.X[i]} -> Cost = {cost}")
+    plot = Scatter()
+    plot.add(res.F, edgecolor="red", facecolor="none")
+    plot.show()
+    
+    
+    
+    
+    
+    # RUN 2
+    problem = Problem(SM, (1, 2, 8, 2, 1), TY)
+    algorithm = get_algorithm(state = 1)
+    
+    res = minimize(problem,
+                algorithm,
+                ("n_gen", 300),
+                callback = my_callback,
+                verbose=False,
+                seed=1)
+
+    print("Unique X:", np.unique(res.X, axis=0).shape[0])
+    print("Unique F:", np.unique(res.F, axis=0).shape[0])
     total_costs = np.sum(res.X * np.array(problem.army_info.cost_vector), axis=1)
     for i, cost in enumerate(total_costs):
         

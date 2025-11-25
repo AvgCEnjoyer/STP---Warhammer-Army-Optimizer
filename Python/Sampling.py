@@ -18,6 +18,8 @@ class MySampling(Sampling):
             check = []
             while len(check) < problem.n_var:
                 i = random.randint(0, problem.n_var-1)
+                if i in check:
+                    continue
                 s = 0
                 s = self.limit_vector[i]
                 a[i] = random.randint(1, s)
@@ -28,5 +30,5 @@ class MySampling(Sampling):
                         continue
                     if a_cost + self.cost_vector[index] > self.max_cost:
                         check.append(index)
-            X.append(np.array(a))
+            X.append(np.array(a.copy()))
         return np.array(X)

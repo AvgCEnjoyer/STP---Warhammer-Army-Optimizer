@@ -24,7 +24,7 @@ class MyCrossover(Crossover):
             
             child = np.floor(alpha * p1 + (1.0 - alpha) * p2)
 
-            child = self._simple_repair(child, problem)
+            #child = self._simple_repair(child, problem)
 
             Y[0, k, :] = child
 

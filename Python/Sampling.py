@@ -12,6 +12,7 @@ class MySampling(Sampling):
         
     def _do(self, problem, n_samples, **kwargs):        
         X = []
+        
         while len(X) < n_samples:
             a_cost = 0
             a = [0 for _ in range(problem.n_var)]
@@ -31,4 +32,14 @@ class MySampling(Sampling):
                     if a_cost + self.cost_vector[index] > self.max_cost:
                         check.append(index)
             X.append(np.array(a.copy()))
+            
+        '''
+        indx = 0
+        while len(X) < n_samples:
+            X.append(self.max_cost // self.cost_vector[indx])
+            print("yeeeee")
+            
+        '''
         return np.array(X)
+
+        

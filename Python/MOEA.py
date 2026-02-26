@@ -43,17 +43,22 @@ class Problem(ElementwiseProblem):
         
         g_i = []
         factor = 10000000
+        check = 0
         
         for i, l_i in enumerate(self.army_info.limit_vector):
-            g_i.append(x[i] - l_i + factor * (x[i] > l_i))
+            g_i.append(x[i] - l_i)
+            if x[i] > l_i:
+                check = 1
             
         cost = 0
         for i, c_i in enumerate(self.army_info.cost_vector):
             cost += x[i] * c_i
         
-        g_i.append(cost - self.max_cost + factor * (cost - self.max_cost > 0))
-
-        out["F"] = [-army_strength, -unit_synergy]
+        g_i.append(cost - self.max_cost)
+        if cost > self.max_cost: 
+            check = 1
+            
+        out["F"] = [-army_strength + factor * check, -unit_synergy]
         out["G"] = g_i
 
 
@@ -66,8 +71,8 @@ def get_algorithm(state = 0):
     
     from pymoo.operators.crossover.hux import HalfUniformCrossover
     
-    #sample = MySampling(problem.army_info.cost_vector, problem.army_info.limit_vector, problem.max_cost)  
-    sample = IntegerRandomSampling()
+    sample = MySampling(problem.army_info.cost_vector, problem.army_info.limit_vector, problem.max_cost)  
+    #sample = IntegerRandomSampling()
     
     repair = MyRepair(problem.army_info.cost_vector,
                     problem.army_info.limit_vector,
@@ -76,9 +81,8 @@ def get_algorithm(state = 0):
     algorithm = NSGA2(
         pop_size=70,
         sampling=sample,   
-        crossover=MyCrossover(lambda_factor=1.5),
+        crossover=MyCrossover(lambda_factor=0.5),
         mutation=MyMutation(problem.army_info.cost_vector, problem.army_info.limit_vector, problem.max_cost),
-        repair= repair,
         eliminate_duplicates=False
     )
     
@@ -140,7 +144,7 @@ if __name__ == "__main__":
         
     res = minimize(problem,
                 algorithm,
-                ("n_gen", 300),
+                ("n_gen", 200),
                 callback = my_callback,
                 verbose=False,
                 seed=1)
@@ -165,7 +169,7 @@ if __name__ == "__main__":
     
     res = minimize(problem,
                 algorithm,
-                ("n_gen", 300),
+                ("n_gen", 200),
                 callback = my_callback,
                 verbose=False,
                 seed=1)

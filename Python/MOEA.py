@@ -6,6 +6,7 @@ from pymoo.core.problem import ElementwiseProblem
 from pymoo.optimize import minimize
 from pymoo.visualization.scatter import Scatter
 from pymoo.algorithms.moo.nsga2 import NSGA2
+from pymoo.operators.crossover.sbx import SBX
 
 from Crossover import MyCrossover
 from Mutation import MyMutation
@@ -119,7 +120,7 @@ def get_algorithm(state = 0):
         print("Using random algorithm")
         time.sleep(1)
         return algorithm
-
+    
 
 if __name__ == "__main__":
     
@@ -133,7 +134,7 @@ if __name__ == "__main__":
     SM = Units_Random.Space_Marines(150)
     TY = Units_Random.Tyranids(150)
     problem = Problem(SM, (1, 2, 8, 2, 1), TY)
-    algorithm = get_algorithm(state = 0)
+    algorithm = get_algorithm(state = state)
 
     def my_callback(algorithm):
         # Alle Fitnesswerte der aktuellen Population
@@ -161,7 +162,7 @@ if __name__ == "__main__":
     
     
     
-    
+    '''
     
     # RUN 2
     problem = Problem(SM, (1, 2, 8, 2, 1), TY)
@@ -183,3 +184,5 @@ if __name__ == "__main__":
     plot = Scatter()
     plot.add(res.F, edgecolor="red", facecolor="none")
     plot.show()
+    
+    '''

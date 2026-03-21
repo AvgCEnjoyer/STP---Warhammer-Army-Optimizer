@@ -1,0 +1,1195 @@
+{
+    "Units": {
+
+        "Example": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : [],
+            "Toughness": 0,
+            "HP" : 0,
+            "Save" : 0,
+            "Invulnerable save" : 0,
+            "Limit" : 0,
+            "Cost" : 0
+        },
+
+        "Broodlord": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Broodlord Claws and Talons"],
+            "Toughness": 5,
+            "HP" : 6,
+            "Save" : 4,
+            "Invulnerable save" : 4,
+            "Limit" : "Character",
+            "Cost" : 80
+        },
+
+        "Deathleaper" : {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Lictor Claws and Talons"],
+            "Toughness": 5,
+            "HP" : 6,
+            "Save" : 4,
+            "Invulnerable save" : 4,
+            "Limit" : "Epic Hero",
+            "Cost" : 80
+        },
+
+        "Hive Tyrant": {
+            "Weapons_Ranged": ["Stranglethorn Cannon"],
+            "Weapons_Melee" : ["Monstrous Bonesword and Lash Whip"],
+            "Toughness": 10,
+            "HP" : 10,
+            "Save" : 2,
+            "Invulnerable save" : 4,
+            "Limit" : "Character",
+            "Cost" : 195
+        },
+
+        "Hyperadapted Raveners": {
+            "Weapons_Ranged": ["Venom Bolt"],
+            "Weapons_Melee" : ["Prime Claws and Talons", "Ravener Heavy Claws and Talons", "Ravener Heavy Claws and Talons", "Ravener Heavy Claws and Talons", "Ravener Heavy Claws and Talons"],
+            "Toughness": 5,
+            "HP" : 18,
+            "Save" : 4,
+            "Invulnerable save" : 7,
+            "Limit" : "Character",
+            "Cost" : 165
+        },
+
+        "Neurotyrant": {
+            "Weapons_Ranged": ["Psychic Scream"],
+            "Weapons_Melee" : ["Neurotyrant Claws and Lashes"],
+            "Toughness": 8,
+            "HP" : 9,
+            "Save" : 4,
+            "Invulnerable save" : 4,
+            "Limit" : "Character",
+            "Cost" : 105
+        },
+
+        "Old One Eye": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Old One Eye's claws and talons - strike"],
+            "Toughness": 9,
+            "HP" : 9,
+            "Save" : 2,
+            "Invulnerable save" : 7,
+            "Limit" : "Epic Hero",
+            "Cost" : 150
+        },
+
+        "Parasite of Mortrex": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Barbed ovipositor", "Clawed limbs"],
+            "Toughness": 5,
+            "HP" : 5,
+            "Save" : 4,
+            "Invulnerable save" : 7,
+            "Limit" : "Character",
+            "Cost" : 80
+        },
+
+        "Tervigon": {
+            "Weapons_Ranged": ["Stinger salvoes"],
+            "Weapons_Melee" : ["Massive crushing claws"],
+            "Toughness": 11,
+            "HP" : 16,
+            "Save" : 2,
+            "Invulnerable save" : 7,
+            "Limit" : "Character",
+            "Cost" : 160
+        },
+
+        "The Swarmlord": {
+            "Weapons_Ranged": ["Synaptic pulse"],
+            "Weapons_Melee" : ["Bone sabres"],
+            "Toughness": 10,
+            "HP" : 10,
+            "Save" : 2,
+            "Invulnerable save" : 4,
+            "Limit" : "Epic Hero",
+            "Cost" : 220
+        },
+
+        "Winged Hive Tyrant": {
+            "Weapons_Ranged": ["Stranglethorn Cannon"],
+            "Weapons_Melee" : ["Monstrous Bonesword and Lash Whip"],
+            "Toughness": 9,
+            "HP" : 10,
+            "Save" : 2,
+            "Invulnerable save" : 4,
+            "Limit" : "Character",
+            "Cost" : 170
+        },
+
+        "Winged Tyranid Prime": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Prime talons"],
+            "Toughness": 5,
+            "HP" : 6,
+            "Save" : 4,
+            "Invulnerable save" : 7,
+            "Limit" : "Character",
+            "Cost" : 65
+        },
+
+        "Gargoyles": {
+            "Weapons_Ranged": ["Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer"],
+            "Weapons_Melee" : ["Blinding Venom", "Blinding Venom", "Blinding Venom", "Blinding Venom", "Blinding Venom", "Blinding Venom", "Blinding Venom", "Blinding Venom", "Blinding Venom", "Blinding Venom"],
+            "Toughness": 3,
+            "HP" : 10,
+            "Save" : 6,
+            "Invulnerable save" : 7,
+            "Limit" : "Battleline",
+            "Cost" : 85
+        },
+
+        "Hormagaunts": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Hormagaunt Talons", "Hormagaunt Talons", "Hormagaunt Talons", "Hormagaunt Talons", "Hormagaunt Talons", "Hormagaunt Talons", "Hormagaunt Talons", "Hormagaunt Talons", "Hormagaunt Talons", "Hormagaunt Talons"],
+            "Toughness": 3,
+            "HP" : 10,
+            "Save" : 5,
+            "Invulnerable save" : 7,
+            "Limit" : "Battleline",
+            "Cost" : 65
+        },
+
+        "Termagants": {
+            "Weapons_Ranged": ["Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer", "Fleshborer"],
+            "Weapons_Melee" : ["Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth"],
+            "Toughness": 3,
+            "HP" : 10,
+            "Save" : 5,
+            "Invulnerable save" : 7,
+            "Limit" : "Battleline",
+            "Cost" : 60
+        },
+
+        "Tyrannocyte": {
+            "Weapons_Ranged": ["Tyrannocyte Bio-Weapons"],
+            "Weapons_Melee" : ["Flensing Whips"],
+            "Toughness": 9,
+            "HP" : 10,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Transport",
+            "Cost" : 105
+        },
+
+        "Barbgaunts": {
+            "Weapons_Ranged": ["Barblauncher", "Barblauncher", "Barblauncher", "Barblauncher", "Barblauncher"],
+            "Weapons_Melee" : ["Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth"],
+            "Toughness": 4,
+            "HP" : 10,
+            "Save" : 4,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 55
+        },
+
+        "Bivores": {
+            "Weapons_Ranged": ["Spore Mine Launcher"],
+            "Weapons_Melee" : ["Chitin-Barbed Limbs"],
+            "Toughness": 6,
+            "HP" : 5,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 50
+        },
+
+        "Carnifexes": {
+            "Weapons_Ranged": ["Stranglethorn Cannon"],
+            "Weapons_Melee" : ["Carnifex Crushing Claws", "Chitinous Claws and Teeth"],
+            "Toughness": 9,
+            "HP" : 8,
+            "Save" : 2,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 90
+        },
+
+        "Exocrine": {
+            "Weapons_Ranged": ["Bio-Plsamic Cannon"],
+            "Weapons_Melee" : ["Powerful Limbs"],
+            "Toughness": 10,
+            "HP" : 14,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 140
+        },
+
+        "Genestealers": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Genestealers Claws and Talons", "Genestealers Claws and Talons", "Genestealers Claws and Talons", "Genestealers Claws and Talons", "Genestealers Claws and Talons"],
+            "Toughness": 4,
+            "HP" : 10,
+            "Save" : 5,
+            "Invulnerable save" : 5,
+            "Limit" : "Other",
+            "Cost" : 75
+        },
+
+        "Harpy": {
+            "Weapons_Ranged": ["Stinger salvoes", "Twin Stranglethorn Cannon"],
+            "Weapons_Melee" : ["Scything Wings"],
+            "Toughness": 9,
+            "HP" : 12,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 215
+        },
+
+        "Harridan": {
+            "Weapons_Ranged": ["Dire Bio-Cannon", "Dire Bio-Cannon"],
+            "Weapons_Melee" : ["Gargantuan Scything Talons"],
+            "Toughness": 10,
+            "HP" : 30,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 610 
+        },
+
+        "Haruspex": {
+            "Weapons_Ranged": ["Grasping Tongue"],
+            "Weapons_Melee" : ["Ravenous Maw", "Shovelling Claws"],
+            "Toughness": 11,
+            "HP" : 14,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 125
+        },
+
+        "Hierophant": {
+            "Weapons_Ranged": ["Bio-Plasma Torrent", "Dire Bio-Cannon", "Dire Bio-Cannon"],
+            "Weapons_Melee" : ["Lashwhip Pods", "Titanic Scything Talons"],
+            "Toughness": 14,
+            "HP" : 30,
+            "Save" : 2,
+            "Invulnerable save" : 5,
+            "Limit" : "Other_1",
+            "Cost" : 810
+        },
+
+        "Hive Crone": {
+            "Weapons_Ranged": ["Drool Cannon", "Stinger salvoes", "Tentaclids"],
+            "Weapons_Melee" : ["Scything Wings", "Thorax Spur"],
+            "Toughness": 9,
+            "HP" : 12,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 200
+        },
+
+        "Hive Guard": {
+            "Weapons_Ranged": ["Shockcannon", "Shockcannon", "Shockcannon"],
+            "Weapons_Melee" : ["Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth"],
+            "Toughness": 7,
+            "HP" : 4,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 90
+        },
+
+        "Lictor": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Lictor Claws and Talons"],
+            "Toughness": 6,
+            "HP" : 6,
+            "Save" : 4,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 60
+        },
+
+        "Maleceptor": {
+            "Weapons_Ranged": ["Psychic overload"],
+            "Weapons_Melee" : ["Massive Scything Talons - Strike"],
+            "Toughness": 11,
+            "HP" : 14,
+            "Save" : 3,
+            "Invulnerable save" : 4,
+            "Limit" : "Other",
+            "Cost" : 170 
+        },
+
+        "Mawloc": {
+            "Weapons_Ranged": ["Distensible Jaw"],
+            "Weapons_Melee" : ["Mawloc Scything Talons"],
+            "Toughness": 10,
+            "HP" : 14,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 135
+        },
+
+        "Mucolid Spores": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : [],
+            "Toughness": 4,
+            "HP" : 3,
+            "Save" : 7,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 30
+        },
+
+        "Neurogaunts": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth", "Chitinous Claws and Teeth"],
+            "Toughness": 3,
+            "HP" : 11,
+            "Save" : 6,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 45
+        },
+
+        "Neurolictor": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Piercing Claws and Talons"],
+            "Toughness": 5,
+            "HP" : 7,
+            "Save" : 4,
+            "Invulnerable save" : 4,
+            "Limit" : "Other_1",
+            "Cost" : 70
+        },
+
+        "Norn Assimilator": {
+            "Weapons_Ranged": ["Toxinjector Harpoon"],
+            "Weapons_Melee" : ["Toxinjector Harpoon (melee)", "Monstrous Scything Talons"],
+            "Toughness": 11,
+            "HP" : 16,
+            "Save" : 2,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 275
+        },
+
+        "Norn Emissary": {
+            "Weapons_Ranged": ["Psychic Tendril - Neurolance"],
+            "Weapons_Melee" : ["Monstrous Scything Talons", "Monstrous Rending Claws"],
+            "Toughness": 11,
+            "HP" : 16,
+            "Save" : 2,
+            "Invulnerable save" : 4,
+            "Limit" : "Other_1",
+            "Cost" : 260
+        },
+
+        "Psychophage": {
+            "Weapons_Ranged": ["Psychoclastic Torrent"],
+            "Weapons_Melee" : ["Talons and Betentacled Maw"],
+            "Toughness": 9,
+            "HP" : 10,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 110
+        },
+
+        "Pyrovores": {
+            "Weapons_Ranged": ["Flamespurt"],
+            "Weapons_Melee" : ["Chitin-Barbed Limbs"],
+            "Toughness": 6,
+            "HP" : 5,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" :40 
+        },
+
+        "Raveners": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Ravener Claws and Talons", "Ravener Claws and Talons", "Ravener Claws and Talons", "Ravener Claws and Talons", "Ravener Claws and Talons"],
+            "Toughness": 5,
+            "HP" : 15,
+            "Save" : 4,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 125
+        },
+
+        "Ripper Swarms": {
+            "Weapons_Ranged": ["Spinemaws", "Spinemaws", "Spinemaws"],
+            "Weapons_Melee" : ["Chitinous Claws and Teeth (Ripperswarm)", "Chitinous Claws and Teeth (Ripperswarm)", "Chitinous Claws and Teeth (Ripperswarm)"],
+            "Toughness": 2,
+            "HP" : 4,
+            "Save" : 6,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 50
+        },
+
+        "Screamer-Killer": {
+            "Weapons_Ranged": ["Bio-Plsamic Scream"],
+            "Weapons_Melee" : ["Screamer Killer Talons"],
+            "Toughness": 9,
+            "HP" : 10,
+            "Save" : 2,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 125
+        },
+
+        "Spore Mines": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : [],
+            "Toughness": 1,
+            "HP" : 3,
+            "Save" : 7,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 55 
+        },
+
+        "Sporocyst": {
+            "Weapons_Ranged": ["Sporocyst Bio Weapons"],
+            "Weapons_Melee" : ["Flensing Whips"],
+            "Toughness": 10,
+            "HP" : 10,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 145
+        },
+
+        "Toxicrene": {
+            "Weapons_Ranged": ["Massive Toxic Lashes (Ranged)"],
+            "Weapons_Melee" : ["Massive Toxic Lashes (Melee)"],
+            "Toughness": 11,
+            "HP" : 14,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 150
+        },
+
+        "Trygon": {
+            "Weapons_Ranged": ["Bio Electric Pulse"],
+            "Weapons_Melee" : ["Trygon Scything Talons"],
+            "Toughness": 10,
+            "HP" : 14,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 140
+        },
+
+        "Tyranid Warriors with Melee Bio-weapons": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Tyranid Warrior Claws and Talons (Melee Bio Weapons)", "Tyranid Warrior Claws and Talons (Melee Bio Weapons)", "Tyranid Warrior Claws and Talons (Melee Bio Weapons)"],
+            "Toughness": 5,
+            "HP" : 9,
+            "Save" : 4,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 75
+        },
+
+        "Tyranid Warriors with Ranged Bio-weapons": {
+            "Weapons_Ranged": ["Barbed Strangler", "Deathspitter", "Venom Cannon"],
+            "Weapons_Melee" : ["Tyranid Warrior Claws and Talons", "Tyranid Warrior Claws and Talons", "Tyranid Warrior Claws and Talons"],
+            "Toughness": 5,
+            "HP" : 9,
+            "Save" :4 ,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 65
+        },
+
+        "Tyrannofex": {
+            "Weapons_Ranged": ["Acid Spray"],
+            "Weapons_Melee" : ["Powerful Limbs (Tyrannofex)"],
+            "Toughness": 12,
+            "HP" : 16,
+            "Save" : 2,
+            "Invulnerable save" : 7,
+            "Limit" : "Other_1",
+            "Cost" : 200
+        },
+
+        "Tyrant Guard": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Crushing Claws and Rending Claws", "Crushing Claws and Rending Claws", "Crushing Claws and Rending Claws"],
+            "Toughness": 8,
+            "HP" : 12,
+            "Save" : 3,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 80
+        },
+
+        "Venomthropes": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Toxic Lashes", "Toxic Lashes", "Toxic Lashes"],
+            "Toughness": 5,
+            "HP" : 9,
+            "Save" : 4,
+            "Invulnerable save" : 7,
+            "Limit" : "Other",
+            "Cost" : 70
+        },
+
+        "Von Ryan's Leapers": {
+            "Weapons_Ranged": [],
+            "Weapons_Melee" : ["Leaper's Talons", "Leaper's Talons", "Leaper's Talons"],
+            "Toughness": 5,
+            "HP" : 9,
+            "Save" : 4,
+            "Invulnerable save" : 6,
+            "Limit" : "Other",
+            "Cost" : 70
+        },
+
+        "Zoanthropes": {
+            "Weapons_Ranged": ["Warp Blast - Focused Witch Fire", "Warp Blast - Focused Witch Fire", "Warp Blast - Focused Witch Fire"],
+            "Weapons_Melee" : ["Chitinous Claws and Teeth (Zoanthropes)", "Chitinous Claws and Teeth (Zoanthropes)", "Chitinous Claws and Teeth (Zoanthropes)"],
+            "Toughness": 5,
+            "HP" : 9,
+            "Save" : 5,
+            "Invulnerable save" : 4,
+            "Limit" : "Other",
+            "Cost" : 100
+        }
+
+    },
+
+    "Weapons" : {
+
+        "Broodlord Claws and Talons": {
+            "Attacks" : 5,
+            "Hit" : 2,
+            "Stregnth" : 6,
+            "AP" : 2,
+            "Damage" : 2
+        },
+
+        "Lictor Claws and Talons": {
+            "Attacks" : 6,
+            "Hit" : 2,
+            "Stregnth" : 7,
+            "AP" : 2,
+            "Damage" : 2
+        },
+
+        "Stranglethorn Cannon": {
+            "Attacks" : 4,
+            "Hit" : 2,
+            "Stregnth" : 7,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Monstrous Bonesword and Lash Whip": {
+            "Attacks" : 6,
+            "Hit" : 2,
+            "Stregnth" : 9,
+            "AP" : 2,
+            "Damage" : 3
+
+        },
+
+        "Venom Bolt": {
+            "Attacks" : 6,
+            "Hit" : 1,
+            "Stregnth" : 6,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Prime Claws and Talons": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 2,
+            "Damage" : 2
+        },
+
+        "Psychic Scream": {
+            "Attacks" : 6,
+            "Hit" : 1,
+            "Stregnth" : 5,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Neurotyrant Claws and Lashes": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Old One Eye's claws and talons - strike": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 14,
+            "AP" : 3,
+            "Damage" : 4
+        },
+
+        "Barbed ovipositor": {
+            "Attacks" : 1,
+            "Hit" : 2,
+            "Stregnth" : 3,
+            "AP" : 2,
+            "Damage" : 3
+        },
+
+        "Clawed limbs": {
+            "Attacks" : 6,
+            "Hit" : 2,
+            "Stregnth" : 5,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Stinger salvoes": {
+            "Attacks" : 8,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Massive crushing claws": {
+            "Attacks" : 4,
+            "Hit" : 4,
+            "Stregnth" : 12,
+            "AP" : 3,
+            "Damage" : 4
+        },
+
+        "Synaptic pulse": {
+            "Attacks" : 6,
+            "Hit" : 1,
+            "Stregnth" : 5,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Bone sabres": {
+            "Attacks" : 8,
+            "Hit" : 2,
+            "Stregnth" : 9,
+            "AP" : 2,
+            "Damage" : 3
+        },
+
+        "Prime Talons": {
+            "Attacks" : 6,
+            "Hit" : 2,
+            "Stregnth" : 6,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Fleshborer": {
+            "Attacks" : 1,
+            "Hit" : 4,
+            "Stregnth" : 5,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Blinding Venom": {
+            "Attacks" : 1,
+            "Hit" : 4,
+            "Stregnth" : 3,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Chitinous Claws and Teeth": {
+            "Attacks" : 1,
+            "Hit" : 4,
+            "Stregnth" : 3,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Hormagaunt Talons": {
+            "Attacks" : 3,
+            "Hit" : 4,
+            "Stregnth" : 3,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Tyrannocyte Bio-Weapons": {
+            "Attacks" : 5,
+            "Hit" : 4,
+            "Stregnth" : 5,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Flensing Whips": {
+            "Attacks" : 6,
+            "Hit" : 4,
+            "Stregnth" : 7,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Barblauncher": {
+            "Attacks" : 3,
+            "Hit" : 4,
+            "Stregnth" : 5,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Spore Mine Launcher": {
+            "Attacks" : 2,
+            "Hit" : 4,
+            "Stregnth" : 6,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Chitin-Barbed Limbs": {
+            "Attacks" : 6,
+            "Hit" : 4,
+            "Stregnth" : 7,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Carnifex Crushing Claws": {
+            "Attacks" : 4,
+            "Hit" : 4,
+            "Stregnth" : 12,
+            "AP" : 3,
+            "Damage" : 4
+        },
+
+        "Bio-Plsamic Cannon": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 9,
+            "AP" : 3,
+            "Damage" : 3
+        },
+
+        "Powerful Limbs": {
+            "Attacks" : 3,
+            "Hit" : 3,
+            "Stregnth" : 17,
+            "AP" : 0,
+            "Damage" : 2
+        },
+
+        "Genestealers Claws and Talons": {
+            "Attacks" : 4,
+            "Hit" : 2,
+            "Stregnth" : 4,
+            "AP" : 2,
+            "Damage" : 1
+        },
+
+        "Scything Wings": {
+            "Attacks" : 4,
+            "Hit" : 4,
+            "Stregnth" : 7,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Twin Stranglethorn Cannon": {
+            "Attacks" : 4,
+            "Hit" : 2,
+            "Stregnth" : 7,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Dire-Bio Cannon": {
+            "Attacks" : 9,
+            "Hit" : 3,
+            "Stregnth" : 10,
+            "AP" : 3,
+            "Damage" : 3
+        },
+
+        "Gargantuan Scything Talons": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 14,
+            "AP" : 2,
+            "Damage" : 3
+        },
+
+        "Grasping Tongue": {
+            "Attacks" : 1,
+            "Hit" : 3,
+            "Stregnth" : 6,
+            "AP" : 2,
+            "Damage" : 4
+        },
+
+        "Ravenous Maw": {
+            "Attacks" : 14,
+            "Hit" : 3,
+            "Stregnth" : 7,
+            "AP" : 1,
+            "Damage" : 2
+        },
+        
+        "Shovelling Claws": {
+            "Attacks" : 4,
+            "Hit" : 3,
+            "Stregnth" : 14,
+            "AP" : 2,
+            "Damage" : 4
+        },
+
+        "Bio-Plasma Torrent": {
+            "Attacks" : 9,
+            "Hit" : 1,
+            "Stregnth" : 7,
+            "AP" : 2,
+            "Damage" : 1
+        },
+
+        "Lashwhip Pods": {
+            "Attacks" : 10,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Titanic Scything Talons": {
+            "Attacks" : 8,
+            "Hit" : 3,
+            "Stregnth" : 20,
+            "AP" : 2,
+            "Damage" : 4
+        },
+
+        "Drool Cannon": {
+            "Attacks" : 6,
+            "Hit" : 1,
+            "Stregnth" : 6,
+            "AP" : 1,
+            "Damage" : 1
+        },
+        
+        "Tentaclids": {
+            "Attacks" : 4,
+            "Hit" : 3,
+            "Stregnth" : 7,
+            "AP" : 0,
+            "Damage" : 2
+        },
+
+        "Thorax Spur": {
+            "Attacks" : 1,
+            "Hit" : 3,
+            "Stregnth" : 10,
+            "AP" : 3,
+            "Damage" : 3
+        },
+
+        "Shockcannon": {
+            "Attacks" : 2,
+            "Hit" : 3,
+            "Stregnth" : 7,
+            "AP" : 1,
+            "Damage" : 3
+        },
+
+        "Psychic Overload": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 10,
+            "AP" : 2,
+            "Damage" : 3
+        },
+
+        "Massive Scything Talons - Strike": {
+            "Attacks" : 3,
+            "Hit" : 3,
+            "Stregnth" : 9,
+            "AP" : 2,
+            "Damage" : 4
+        },
+
+        "Distensible Jaw": {
+            "Attacks" : 1,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 0,
+            "Damage" : 3
+        },
+
+        "Mawloc Scything Talons": {
+            "Attacks" : 16,
+            "Hit" : 3,
+            "Stregnth" : 8,
+            "AP" : 2,
+            "Damage" : 1
+        },
+
+        "Piercing Claws and Talons": {
+            "Attacks" : 6,
+            "Hit" : 2,
+            "Stregnth" : 6,
+            "AP" : 2,
+            "Damage" : 1
+        },
+
+        "Toxinjector Harpoon": {
+            "Attacks" : 2,
+            "Hit" : 2,
+            "Stregnth" : 12,
+            "AP" : 3,
+            "Damage" : 4
+        },
+        
+        "Monstrous Scything Talons": {
+            "Attacks" : 6,
+            "Hit" : 2,
+            "Stregnth" : 9,
+            "AP" : 2,
+            "Damage" : 3
+        },
+
+        "Toxinjector Harpoon (melee)": {
+            "Attacks" : 4,
+            "Hit" : 2,
+            "Stregnth" : 12,
+            "AP" : 3,
+            "Damage" : 4
+        },
+
+        "Psychic Tendril - Neurolance": {
+            "Attacks" : 3,
+            "Hit" : 2,
+            "Stregnth" : 12,
+            "AP" : 3,
+            "Damage" : 3
+        },
+
+        "Monstrous Rending Claws": {
+            "Attacks" : 4,
+            "Hit" : 2,
+            "Stregnth" : 7,
+            "AP" : 2,
+            "Damage" : 2
+        },
+
+        "Psychoclastic Torrent": {
+            "Attacks" : 3,
+            "Hit" : 1,
+            "Stregnth" : 6,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Talons and Betentacled Maw": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 6,
+            "AP" : 2,
+            "Damage" : 2
+        },
+
+        "Flamespurt": {
+            "Attacks" : 4,
+            "Hit" : 1,
+            "Stregnth" : 6,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Ravener Claws and Talons": {
+            "Attacks" : 3,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 2,
+            "Damage" : 2
+        },
+
+        "Spinemaws": {
+            "Attacks" : 4,
+            "Hit" : 5,
+            "Stregnth" : 3,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Chitinous Claws and Teeth (Ripperswarm)": {
+            "Attacks" : 6,
+            "Hit" : 5,
+            "Stregnth" : 2,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Bio-Plsamic Scream": {
+            "Attacks" : 6,
+            "Hit" : 4,
+            "Stregnth" : 8,
+            "AP" : 2,
+            "Damage" : 1
+        },
+
+        "Screamer Killer Talons": {
+            "Attacks" : 10,
+            "Hit" : 3,
+            "Stregnth" : 10,
+            "AP" : 2,
+            "Damage" : 3
+        },
+
+        "Sporocyst Bio Weapons": {
+            "Attacks" : 6,
+            "Hit" : 5,
+            "Stregnth" : 2,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Massive Toxic Lashes (Ranged)": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 6,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Massive Toxic Lashes (Melee)": {
+            "Attacks" : 12,
+            "Hit" : 3,
+            "Stregnth" : 6,
+            "AP" : 1,
+            "Damage" : 2
+        },
+
+        "Bio Electric Pulse": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Trygon Scything Talons": {
+            "Attacks" : 12,
+            "Hit" : 3,
+            "Stregnth" : 9,
+            "AP" : 2,
+            "Damage" : 3
+        },
+
+        "Deathspitter": {
+            "Attacks" : 3,
+            "Hit" : 4,
+            "Stregnth" : 5,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Venom Cannon": {
+            "Attacks" : 2,
+            "Hit" : 4,
+            "Stregnth" : 9,
+            "AP" : 2,
+            "Damage" : 2
+        },
+
+        "Barbed Strangler": {
+            "Attacks" : 4,
+            "Hit" : 4,
+            "Stregnth" : 6,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Tyranid Warrior Claws and Talons": {
+            "Attacks" : 5,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Tyranid Warrior Claws and Talons (Melee Bio Weapons)": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 2,
+            "Damage" : 1
+        },
+
+        "Acid Spray": {
+            "Attacks" : 9,
+            "Hit" : 1,
+            "Stregnth" : 6,
+            "AP" : 2,
+            "Damage" : 2
+        },
+        
+        "Powerful Limbs (Tyrannofex)": {
+            "Attacks" : 4,
+            "Hit" : 3,
+            "Stregnth" : 8,
+            "AP" : 0,
+            "Damage" : 2
+        },
+
+        "Crushing Claws and Rending Claws": {
+            "Attacks" : 2,
+            "Hit" : 4,
+            "Stregnth" : 8,
+            "AP" : 2,
+            "Damage" : 2
+        },
+
+        "Toxic Lashes": {
+            "Attacks" : 5,
+            "Hit" : 3,
+            "Stregnth" : 3,
+            "AP" : 0,
+            "Damage" : 1
+        },
+
+        "Leaper's Talons": {
+            "Attacks" : 6,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 1,
+            "Damage" : 1
+        },
+
+        "Warp Blast - Focused Witch Fire": {
+            "Attacks" : 1,
+            "Hit" : 3,
+            "Stregnth" : 12,
+            "AP" : 3,
+            "Damage" : 4
+        },
+
+        "Chitinous Claws and Teeth (Zoanthropes)": {
+            "Attacks" : 2,
+            "Hit" : 5,
+            "Stregnth" : 3,
+            "AP" : 0,
+            "Damage" : 1
+        }
+
+    }
+}

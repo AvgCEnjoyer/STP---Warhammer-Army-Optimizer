@@ -14,10 +14,10 @@ class MyRepair(Repair):
 
         repaired = []
         for x in X:
-            # Clamp auf Limits
+            # Clip to limits
             x = np.clip(x, 0, self.limit_vector)
 
-            # Reduziere Kosten falls nötig
+            # Reduce cost
             total_cost = np.sum(x * self.cost_vector)
             while total_cost > self.max_cost and np.any(x > 0):
                 candidates = np.where(x > 0)[0]
@@ -27,12 +27,10 @@ class MyRepair(Repair):
                 if max_reduction >= 1:
                     reduction = np.random.randint(1, max_reduction + 1)
                     x[idx] -= reduction
-                # sonst nichts tun, Schleife prüft total_cost erneut
                 
                 total_cost = np.sum(x * self.cost_vector)
 
-
-            # Optional: zufälliges Auffüllen für Vielfalt
+            # Fill up random slots
             remaining_budget = self.max_cost - np.sum(x * self.cost_vector)
             if remaining_budget > 0:
                 candidates = np.where(x < self.limit_vector)[0]

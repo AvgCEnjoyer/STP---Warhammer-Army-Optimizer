@@ -1,17 +1,6 @@
 {
     "Units": {
 
-        "Example": {
-            "Weapons_Ranged": [],
-            "Weapons_Melee" : [],
-            "Toughness": 0,
-            "HP" : 0,
-            "Save" : 0,
-            "Invulnerable save" : 0,
-            "Limit" : 0,
-            "Cost" : 0
-        },
-
         "Broodlord": {
             "Weapons_Ranged": [],
             "Weapons_Melee" : ["Broodlord Claws and Talons"],
@@ -20,7 +9,10 @@
             "Save" : 4,
             "Invulnerable save" : 4,
             "Limit" : "Character",
-            "Cost" : 80
+            "Cost" : 80,
+            "Role" : ["HQ", "Fast"],
+            "Keywords": ["Synapse", "Psyker", "Infantry", "Moderate"],
+            "Leader": ["Genestealers"]
         },
 
         "Deathleaper" : {
@@ -31,7 +23,9 @@
             "Save" : 4,
             "Invulnerable save" : 4,
             "Limit" : "Epic Hero",
-            "Cost" : 80
+            "Cost" : 80,
+            "Keywords": ["Infantry", "Moderate"],
+            "Leader": []
         },
 
         "Hive Tyrant": {
@@ -42,7 +36,9 @@
             "Save" : 2,
             "Invulnerable save" : 4,
             "Limit" : "Character",
-            "Cost" : 195
+            "Cost" : 195,
+            "Keywords": ["Monster", "Synapse", "Psyker", "Moderate"],
+            "Leader": ["Tyrant Guard"]
         },
 
         "Hyperadapted Raveners": {
@@ -53,7 +49,9 @@
             "Save" : 4,
             "Invulnerable save" : 7,
             "Limit" : "Character",
-            "Cost" : 165
+            "Cost" : 165,
+            "Keywords": ["Infantry", "Burrower", "Synapse"],
+            "Leader": ["Raveners"]
         },
 
         "Neurotyrant": {
@@ -64,7 +62,9 @@
             "Save" : 4,
             "Invulnerable save" : 4,
             "Limit" : "Character",
-            "Cost" : 105
+            "Cost" : 105,
+            "Keywords": ["Monster", "Synapse", "Fly", "Psyker"],
+            "Leader": ["Tyrant Guard", "Zoanthropes", "Neurogaunts"]
         },
 
         "Old One Eye": {
@@ -75,7 +75,9 @@
             "Save" : 2,
             "Invulnerable save" : 7,
             "Limit" : "Epic Hero",
-            "Cost" : 150
+            "Cost" : 150,
+            "Keywords": ["Monster", "Moderate"],
+            "Leader": ["Carnifexes"]
         },
 
         "Parasite of Mortrex": {
@@ -86,7 +88,9 @@
             "Save" : 4,
             "Invulnerable save" : 7,
             "Limit" : "Character",
-            "Cost" : 80
+            "Cost" : 80,
+            "Keywords": ["Infantry", "Synapse", "Fly"],
+            "Leader": []
         },
 
         "Tervigon": {
@@ -97,7 +101,9 @@
             "Save" : 2,
             "Invulnerable save" : 7,
             "Limit" : "Character",
-            "Cost" : 160
+            "Cost" : 160,
+            "Keywords": ["Monster", "Psyker", "Moderate"],
+            "Leader": []
         },
 
         "The Swarmlord": {
@@ -108,7 +114,9 @@
             "Save" : 2,
             "Invulnerable save" : 4,
             "Limit" : "Epic Hero",
-            "Cost" : 220
+            "Cost" : 220,
+            "Keywords": ["Monster", "Psyker", "Synapse", "Moderate"],
+            "Leader": ["Tyrant Guard"]
         },
 
         "Winged Hive Tyrant": {
@@ -119,7 +127,9 @@
             "Save" : 2,
             "Invulnerable save" : 4,
             "Limit" : "Character",
-            "Cost" : 170
+            "Cost" : 170,
+            "Keywords": ["Monster", "Fly", "Psyker"],
+            "Leader": []
         },
 
         "Winged Tyranid Prime": {
@@ -130,7 +140,9 @@
             "Save" : 4,
             "Invulnerable save" : 7,
             "Limit" : "Character",
-            "Cost" : 65
+            "Cost" : 65,
+            "Keywords": ["Infantry", "Fly", "Synapse"],
+            "Leader": ["Gargoyles", "Tyranid Warriors with Melee Bio-weapons", "Tyranid Warriors with Ranged Bio-weapons"]
         },
 
         "Gargoyles": {
@@ -141,7 +153,10 @@
             "Save" : 6,
             "Invulnerable save" : 7,
             "Limit" : "Battleline",
-            "Cost" : 85
+            "Cost" : 85,
+            "Keywords": ["Fly", "Swarm"],
+            "Leader": []
+            
         },
 
         "Hormagaunts": {
@@ -152,7 +167,9 @@
             "Save" : 5,
             "Invulnerable save" : 7,
             "Limit" : "Battleline",
-            "Cost" : 65
+            "Cost" : 65,
+            "Keywords": ["Swarm", "Fast"],
+            "Leader": []
         },
 
         "Termagants": {
@@ -163,7 +180,9 @@
             "Save" : 5,
             "Invulnerable save" : 7,
             "Limit" : "Battleline",
-            "Cost" : 60
+            "Cost" : 60,
+            "Keywords": ["Swarm", "Slow"],
+            "Leader": []
         },
 
         "Tyrannocyte": {
@@ -174,7 +193,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Transport",
-            "Cost" : 105
+            "Cost" : 105,
+            "Keywords": ["Transport"],
+            "Leader": []
         },
 
         "Barbgaunts": {
@@ -185,7 +206,9 @@
             "Save" : 4,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 55
+            "Cost" : 55,
+            "Keywords": ["Infantry", "Slow"],
+            "Leader": []
         },
 
         "Bivores": {
@@ -196,7 +219,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 50
+            "Cost" : 50,
+            "Keywords": ["Infantry", "Slow", "Screen"],
+            "Leader": []
         },
 
         "Carnifexes": {
@@ -207,7 +232,9 @@
             "Save" : 2,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 90
+            "Cost" : 90,
+            "Keywords": ["Monster", "Moderate"],
+            "Leader": []
         },
 
         "Exocrine": {
@@ -218,7 +245,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 140
+            "Cost" : 140,
+            "Keywords": ["Monster", "Moderate"],
+            "Leader": []
         },
 
         "Genestealers": {
@@ -229,7 +258,9 @@
             "Save" : 5,
             "Invulnerable save" : 5,
             "Limit" : "Other",
-            "Cost" : 75
+            "Cost" : 75,
+            "Keywords": ["Infantry", "Fast"],
+            "Leader": []
         },
 
         "Harpy": {
@@ -240,7 +271,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 215
+            "Cost" : 215,
+            "Keywords": ["Monster", "Fly"],
+            "Leader": []
         },
 
         "Harridan": {
@@ -251,7 +284,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 610 
+            "Cost" : 610,
+            "Keywords": ["Monster", "Fly", "Transport"],
+            "Leader": [] 
         },
 
         "Haruspex": {
@@ -262,7 +297,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 125
+            "Cost" : 125,
+            "Keywords": ["Monster", "Moderate"],
+            "Leader": []
         },
 
         "Hierophant": {
@@ -273,7 +310,9 @@
             "Save" : 2,
             "Invulnerable save" : 5,
             "Limit" : "Other_1",
-            "Cost" : 810
+            "Cost" : 810,
+            "Keywords": ["Monster", "Fast"],
+            "Leader": []
         },
 
         "Hive Crone": {
@@ -284,7 +323,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 200
+            "Cost" : 200,
+            "Keywords": ["Monster", "Fly"],
+            "Leader": []
         },
 
         "Hive Guard": {
@@ -295,7 +336,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 90
+            "Cost" : 90,
+            "Keywords": ["Infantry", "Slow"],
+            "Leader": []
         },
 
         "Lictor": {
@@ -306,7 +349,9 @@
             "Save" : 4,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 60
+            "Cost" : 60,
+            "Keywords": ["Infantry", "Fast"],
+            "Leader": []
         },
 
         "Maleceptor": {
@@ -317,7 +362,9 @@
             "Save" : 3,
             "Invulnerable save" : 4,
             "Limit" : "Other",
-            "Cost" : 170 
+            "Cost" : 170 ,
+            "Keywords": ["Monster", "Psyker", "Synapse", "Moderate"],
+            "Leader": []
         },
 
         "Mawloc": {
@@ -328,7 +375,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 135
+            "Cost" : 135,
+            "Keywords": ["Monster", "Burrower"],
+            "Leader": []
         },
 
         "Mucolid Spores": {
@@ -339,7 +388,9 @@
             "Save" : 7,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 30
+            "Cost" : 30,
+            "Keywords": ["Fly", "Screen"],
+            "Leader": []
         },
 
         "Neurogaunts": {
@@ -350,7 +401,9 @@
             "Save" : 6,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 45
+            "Cost" : 45,
+            "Keywords": ["Swarm", "Slow"],
+            "Leader": []
         },
 
         "Neurolictor": {
@@ -361,7 +414,9 @@
             "Save" : 4,
             "Invulnerable save" : 4,
             "Limit" : "Other_1",
-            "Cost" : 70
+            "Cost" : 70,
+            "Keywords": ["Infantry", "Moderate", "Synapse"],
+            "Leader": []
         },
 
         "Norn Assimilator": {
@@ -372,7 +427,9 @@
             "Save" : 2,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 275
+            "Cost" : 275,
+            "Keywords": ["Monster", "Synapse", "Fast"],
+            "Leader": []
         },
 
         "Norn Emissary": {
@@ -383,7 +440,9 @@
             "Save" : 2,
             "Invulnerable save" : 4,
             "Limit" : "Other_1",
-            "Cost" : 260
+            "Cost" : 260,
+            "Keywords": ["Monster", "Synapse", "Fast"],
+            "Leader": []
         },
 
         "Psychophage": {
@@ -394,7 +453,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 110
+            "Cost" : 110,
+            "Keywords": ["Monster", "Fast"],
+            "Leader": []
         },
 
         "Pyrovores": {
@@ -405,7 +466,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" :40 
+            "Cost" :40,
+            "Keywords": ["Infantry", "Slow"],
+            "Leader": []
         },
 
         "Raveners": {
@@ -416,7 +479,9 @@
             "Save" : 4,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 125
+            "Cost" : 125,
+            "Keywords": ["Infantry", "Burrower"],
+            "Leader": []
         },
 
         "Ripper Swarms": {
@@ -427,7 +492,9 @@
             "Save" : 6,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 50
+            "Cost" : 50,
+            "Keywords": ["Swarm", "Screen"],
+            "Leader": []
         },
 
         "Screamer-Killer": {
@@ -438,7 +505,9 @@
             "Save" : 2,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 125
+            "Cost" : 125,
+            "Keywords": ["Monster", "Moderate"],
+            "Leader": []
         },
 
         "Spore Mines": {
@@ -449,7 +518,9 @@
             "Save" : 7,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 55 
+            "Cost" : 55,
+            "Keywords": ["Fly", "Screen"],
+            "Leader": [] 
         },
 
         "Sporocyst": {
@@ -460,7 +531,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 145
+            "Cost" : 145,
+            "Keywords": ["Monster", "Slow"],
+            "Leader": []
         },
 
         "Toxicrene": {
@@ -471,7 +544,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 150
+            "Cost" : 150,
+            "Keywords": ["Monster", "Moderate"],
+            "Leader": []
         },
 
         "Trygon": {
@@ -482,7 +557,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 140
+            "Cost" : 140,
+            "Keywords": ["Monster", "Burrower"],
+            "Leader": []
         },
 
         "Tyranid Warriors with Melee Bio-weapons": {
@@ -493,7 +570,9 @@
             "Save" : 4,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 75
+            "Cost" : 75,
+            "Keywords": ["Infantry", "Synapse", "Slow"],
+            "Leader": []
         },
 
         "Tyranid Warriors with Ranged Bio-weapons": {
@@ -504,7 +583,9 @@
             "Save" :4 ,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 65
+            "Cost" : 65,
+            "Keywords": ["Infantry", "Synapse", "Slow"],
+            "Leader": []
         },
 
         "Tyrannofex": {
@@ -515,7 +596,9 @@
             "Save" : 2,
             "Invulnerable save" : 7,
             "Limit" : "Other_1",
-            "Cost" : 200
+            "Cost" : 200,
+            "Keywords": ["Monster", "Fast"],
+            "Leader": []
         },
 
         "Tyrant Guard": {
@@ -526,7 +609,9 @@
             "Save" : 3,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 80
+            "Cost" : 80,
+            "Keywords": ["Infantry", "Slow"],
+            "Leader": []
         },
 
         "Venomthropes": {
@@ -537,7 +622,9 @@
             "Save" : 4,
             "Invulnerable save" : 7,
             "Limit" : "Other",
-            "Cost" : 70
+            "Cost" : 70,
+            "Keywords": ["Infantry", "Fly"],
+            "Leader": []
         },
 
         "Von Ryan's Leapers": {
@@ -548,7 +635,9 @@
             "Save" : 4,
             "Invulnerable save" : 6,
             "Limit" : "Other",
-            "Cost" : 70
+            "Cost" : 70,
+            "Keywords": ["Infantry", "Fast"],
+            "Leader": []
         },
 
         "Zoanthropes": {
@@ -559,7 +648,9 @@
             "Save" : 5,
             "Invulnerable save" : 4,
             "Limit" : "Other",
-            "Cost" : 100
+            "Cost" : 100,
+            "Keywords": ["Infantry", "Synapse", "Fly", "Psyker"],
+            "Leader": []
         }
 
     },

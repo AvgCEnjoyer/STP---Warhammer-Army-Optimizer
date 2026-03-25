@@ -55,3 +55,95 @@ def get_synergy(a, army_info_a):
     for pair in index_pairs:
         synergy_value += army_info_a.synergy_matrix[pair[0]][pair[1]]
     return synergy_value
+
+
+#------------------------
+#
+# TARGET AWARE
+#
+#------------------------
+
+def damage_vs_target(unit, weapons, target):
+    
+    def wound_roll(S, T):
+        if S >= 2*T: return 2
+        elif S > T: return 3
+        elif S == T: return 4
+        elif S*2 <= T: return 6
+        else: return 5
+
+    toughness = target["Toughness"]
+    save = target["Save"]
+    invul = target["Invul"]
+
+    dmg = 0.0
+
+    for weapon_name in weapons:
+        w = weapons_dict[weapon_name]
+
+        attacks = w["Attacks"]
+        hit = w["Hit"]
+        strength = w["Stregnth"]
+        ap = w["AP"]
+        damage = w["Damage"]
+
+        p_hit = (7 - hit) / 6
+        p_wound = (7 - wound_roll(strength, toughness)) / 6
+
+        modified_save = save + ap
+        effective_save = min(modified_save, invul)
+
+        p_fail = 1 - (7 - effective_save) / 6
+
+        dmg += attacks * p_hit * p_wound * p_fail * damage
+
+    return dmg
+
+def get_mu_target_aware(a, army_info, enemy):
+
+    total_damage = 0.0
+
+    enemy_counts = np.array(enemy)
+    total_enemy_units = np.sum(enemy_counts)
+
+    for i, count in enumerate(a):
+        if count == 0:
+            continue
+
+        unit = army_info.units_data[i]
+        weapons = unit["Weapons_Melee"] + unit["Weapons_Ranged"]
+
+        for j, enemy_count in enumerate(enemy):
+            if enemy_count == 0:
+                continue
+
+            target = enemy.units_data[j]
+
+            # Gewicht = Häufigkeit im Gegner
+            w_j = enemy_count / total_enemy_units
+
+            dmg_vs_target = damage_vs_target(
+                unit,
+                weapons,
+                target
+            )
+
+            total_damage += count * w_j * dmg_vs_target
+
+    return total_damage
+
+def get_army_strength_target_aware(a, b, army_a, army_b):
+    mu_a = get_mu_target_aware(a, army_a, army_b)
+    mu_b = get_mu_target_aware(b, army_b, army_a)
+
+    return mu_a - mu_b
+
+
+#------------------------------
+#
+#   Synergy Computation
+#
+#------------------------------
+
+def get_synergy(army):
+    pass

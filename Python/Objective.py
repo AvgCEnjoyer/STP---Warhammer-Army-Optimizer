@@ -99,14 +99,14 @@ def get_army_strength_target_aware(a, b, army_a, army_b):
 keyword_weights = {
 
     # =========================
-    # 🧠 Utility / Support
+    # Utility / Support
     # =========================
 
     ("Psyker", "Infantry"): 1.5,
     ("Psyker", "Swarm"): 2.0,
     ("Psyker", "Monster"): 1.0,
 
-    ("Synapse", "Swarm"): 2.5,     # extrem wichtig
+    ("Synapse", "Swarm"): 2.5,    
     ("Synapse", "Infantry"): 1.5,
     ("Synapse", "Monster"): 1.0,
 
@@ -116,7 +116,7 @@ keyword_weights = {
 
 
     # =========================
-    # 🪲 Einheitstypen
+    # Unit Types
     # =========================
 
     ("Infantry", "Infantry"): 0.5,
@@ -126,11 +126,11 @@ keyword_weights = {
     ("Swarm", "Swarm"): 0.5,
     ("Monster", "Swarm"): 0.5,
 
-    ("Monster", "Monster"): -0.5,   # Redundanz
+    ("Monster", "Monster"): -0.5,  
 
 
     # =========================
-    # ⚡ Mobilität
+    # Mobility
     # =========================
 
     ("Fast", "Fast"): 0.5,
@@ -141,14 +141,14 @@ keyword_weights = {
 
     ("Slow", "Slow"): -0.3,
     ("Slow", "Swarm"): -0.5,
-
-    # Konflikte
+    
+    #Conflicts
     ("Fast", "Slow"): -1.0,
     ("Fast", "Moderate"): 0.3,
 
 
     # =========================
-    # 🕊️ Spezialbewegung
+    # Special Movement
     # =========================
 
     ("Fly", "Fast"): 1.5,
@@ -159,18 +159,18 @@ keyword_weights = {
     ("Burrower", "Infantry"): 1.0,
     ("Burrower", "Swarm"): 1.0,
 
-    # leichte Konflikte
+    #Minor Conflicts
     ("Burrower", "Slow"): -0.5,
 
 
     # =========================
-    # 🔗 Cross Synergies
+    # Cross Synergies
     # =========================
 
     ("Fast", "Psyker"): 1.0,
     ("Fast", "Synapse"): 1.0,
 
-    ("Swarm", "Synapse"): 2.5,  # nochmal explizit (wichtig!)
+    ("Swarm", "Synapse"): 2.5,  
 
     ("Monster", "Psyker"): 1.0,
 }

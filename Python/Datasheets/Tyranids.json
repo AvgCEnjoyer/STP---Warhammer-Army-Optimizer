@@ -134,7 +134,7 @@
 
         "Winged Tyranid Prime": {
             "Weapons_Ranged": [],
-            "Weapons_Melee" : ["Prime talons"],
+            "Weapons_Melee" : ["Prime Talons"],
             "Toughness": 5,
             "HP" : 6,
             "Save" : 4,
@@ -355,7 +355,7 @@
         },
 
         "Maleceptor": {
-            "Weapons_Ranged": ["Psychic overload"],
+            "Weapons_Ranged": ["Psychic Overload"],
             "Weapons_Melee" : ["Massive Scything Talons - Strike"],
             "Toughness": 11,
             "HP" : 14,
@@ -906,7 +906,7 @@
             "Damage" : 2
         },
 
-        "Dire-Bio Cannon": {
+        "Dire Bio-Cannon": {
             "Attacks" : 9,
             "Hit" : 3,
             "Stregnth" : 10,
@@ -1107,6 +1107,14 @@
         },
 
         "Ravener Claws and Talons": {
+            "Attacks" : 3,
+            "Hit" : 3,
+            "Stregnth" : 5,
+            "AP" : 2,
+            "Damage" : 2
+        },
+
+        "Ravener Heavy Claws and Talons": {
             "Attacks" : 3,
             "Hit" : 3,
             "Stregnth" : 5,

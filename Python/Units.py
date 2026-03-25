@@ -1,42 +1,71 @@
+import json
+import numpy as np
 
-class Space_Marines:
-    def __init__(self):
-        '''
-        Load unit data from file
-        [ {cost, attacks, hit, strength, save, toughness} ]
-        '''
-        #Example 
-        self.units_data = [
-                                {"attacks" : 6, "hit" : 2, "strength" : 5, "damage" : 2, "save" : 3, "toughness" : 4, "limit" : 3}, 
-                                {"attacks" : 14, "hit" : 3, "strength" : 5, "damage" : 1, "save" : 2, "toughness" : 5, "limit" : 2},
-                                {"attacks" : 10, "hit" : 3, "strength" : 4, "damage" : 1, "save" : 2, "toughness" : 6, "limit" : 4},
-                                {"attacks" : 5, "hit" : 2, "strength" : 8, "damage" : 2, "save" : 4, "toughness" : 4, "limit" : 3},
-                                {"attacks" : 1, "hit" : 2, "strength" : 18, "damage" : 5, "save" : 2, "toughness" : 10, "limit" : 1}
-                                ]
-        
-        #Sysmmetrical matrix, consisting of values 0 <= v <= 10 resembling low and high synergy potential
-        self.synergy_matrix = [
-            [0 , 5 , 10, 6 , 2] ,
-            [5 , 0 , 4 , 5 , 1] ,
-            [10, 4 , 0 , 3 , 8] ,
-            [6 , 5 , 3 , 0 , 2] ,
-            [2 , 1 , 8 , 2 , 0]  
-        ]
-        self.limit_vector = (1, 3, 2, 4, 2)
-        self.cost_vector = (200, 250, 150, 300, 500)
-        
 class Tyranids:
-    def __init__(self):
-        '''
-        Load unit data from file
-        [ {cost, attacks, hit, strength, damage, save, toughness} ]
-        '''
-        #Example
-        self.units_data = [
-                                {"cost" : 0, "attacks" : 1, "hit" : 4, "strength" : 5, "damage" : 1, "save" : 4, "toughness" : 1}, 
-                                {"cost" : 0, "attacks" : 3, "hit" : 4, "strength" : 3, "damage" : 1, "save" : 4, "toughness" : 1},
-                                {"cost" : 0, "attacks" : 3, "hit" : 4, "strength" : 4, "damage" : 1, "save" : 4, "toughness" : 1},
-                                {"cost" : 0, "attacks" : 5, "hit" : 4, "strength" : 4, "damage" : 1, "save" : 3, "toughness" : 1},
-                                {"cost" : 0, "attacks" : 4, "hit" : 3, "strength" : 3, "damage" : 1, "save" : 5, "toughness" : 1}
-                                ]
-        
+
+    def __init__(self, json_path):
+        self.units, self.weapons = self.load_data(json_path)
+
+        self.unit_names = list(self.units.keys())
+        self.n_units = len(self.unit_names)
+
+        self.units_data = []
+        self.cost_vector = np.zeros(self.n_units)
+        self.limit_vector = np.zeros(self.n_units)
+
+        self._build()
+
+    # -------------------------
+    # JSON 
+    # -------------------------
+    def load_data(self, path):
+        with open(path, "r") as f:
+            data = json.load(f)
+        return data["Units"], data["Weapons"]
+
+    # -------------------------
+    # Limit Mapping
+    # -------------------------
+    def get_limit(self, limit):
+        if limit == "Epic Hero":
+            return 1
+        elif limit == "Character":
+            return 3
+        elif limit == "Battleline":
+            return 6
+        elif limit == "Transport":
+            return 6
+        elif limit == "Other":
+            return 6
+        elif limit == "Other_1":
+            return 3
+        else:
+            raise ValueError(f"Unknown limit type: {limit}")
+
+    # -------------------------
+    # Build Structure
+    # -------------------------
+    def _build(self):
+        for i, name in enumerate(self.unit_names):
+            u = self.units[name]
+
+            unit_dict = {
+                "name": name,
+                "Weapons_Ranged": u["Weapons_Ranged"],
+                "Weapons_Melee": u["Weapons_Melee"],
+                "Toughness": u["Toughness"],
+                "HP": u["HP"],
+                "Save": u["Save"],
+                "Invul": u["Invulnerable save"],
+                "Limit": self.get_limit(u["Limit"]),
+                "Cost": u["Cost"],
+                "Keywords": [k.strip().capitalize() for k in u["Keywords"]],
+                "Leader": [l.strip() for l in u["Leader"]]
+            }
+
+            self.units_data.append(unit_dict)
+
+            self.cost_vector[i] = u["Cost"]
+            self.limit_vector[i] = unit_dict["Limit"]
+
+        self.limit_vector = self.limit_vector.astype(int)

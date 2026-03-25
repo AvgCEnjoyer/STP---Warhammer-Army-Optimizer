@@ -4,66 +4,13 @@ import numpy as np
 from math import sqrt
 import time
 
-def get_mu_sigma2(army, army_info, benchmark_army_info):
-        '''
-        a_i = unit type
-        n_i = attacks per model
-        q_i = probability of wounds, e.g. P(hit) * P(wound) * P(no_save) * damage
-        '''
-        def wound_table(strength, toughness):
-            if 2 * strength <= toughness:
-                return 6
-            if strength <= toughness:
-                return 5
-            if strength == toughness:
-                return 4
-            if strength >= 2 * toughness:
-                return 2
-            if strength >= toughness:
-                return 3
-        
-        mu_total = 0
-        
-        benchmark_toughness = np.median([unit["toughness"] for unit in benchmark_army_info.units_data])
-        benchmark_nosave = np.median([7-int(unit["save"]) for unit in benchmark_army_info.units_data])
-        
-        for i, a_i in enumerate(army):
-            nosave = max(benchmark_nosave - army_info.units_data[i]["ap"], 0)
-            n_i = army_info.units_data[i]["attacks"] 
-            q_i = (7-army_info.units_data[i]["hit"]) / 6 * (7-wound_table(army_info.units_data[i]["strength"], benchmark_toughness)) / 6 * nosave / 6 * army_info.units_data[i]["damage"]
-            N_i = a_i * n_i
-            mu_total += N_i * q_i
-        
-        return mu_total
-    
-def get_army_strength(a, b, army_info_a, army_info_b, epsilon =  1e-9):
-    mu_a = get_mu_sigma2(a, army_info_a, army_info_b)
-    mu_b = get_mu_sigma2(b, army_info_b, army_info_a)
-    
-    return mu_a - mu_b
-
-def get_synergy(a, army_info_a):
-    index_pairs = []
-    for i, unit_i in enumerate(a):
-        for j, unit_j in enumerate(a):
-            if unit_i == 0 or unit_j == 0:
-                continue
-            if i == j:
-                continue
-            index_pairs.append((i, j))
-    synergy_value = 0
-    for pair in index_pairs:
-        synergy_value += army_info_a.synergy_matrix[pair[0]][pair[1]]
-    return synergy_value
-
-
 #------------------------
 #
 # TARGET AWARE
 #
 #------------------------
 
-def damage_vs_target(unit, weapons, target):
+def damage_vs_target(unit, weapons, target, weapons_dict):
     
     def wound_roll(S, T):
         if S >= 2*T: return 2
@@ -99,12 +46,15 @@ def damage_vs_target(unit, weapons, target):
 
     return dmg
 
-def get_mu_target_aware(a, army_info, enemy):
+def get_mu_target_aware(a, army_info, enemy_counts, enemy_info):
 
     total_damage = 0.0
 
-    enemy_counts = np.array(enemy)
+    enemy_counts = np.array(enemy_counts)
     total_enemy_units = np.sum(enemy_counts)
+
+    if total_enemy_units == 0:
+        return 0.0
 
     for i, count in enumerate(a):
         if count == 0:
@@ -113,19 +63,19 @@ def get_mu_target_aware(a, army_info, enemy):
         unit = army_info.units_data[i]
         weapons = unit["Weapons_Melee"] + unit["Weapons_Ranged"]
 
-        for j, enemy_count in enumerate(enemy):
+        for j, enemy_count in enumerate(enemy_counts):
             if enemy_count == 0:
                 continue
 
-            target = enemy.units_data[j]
+            target = enemy_info.units_data[j]
 
-            # Gewicht = Häufigkeit im Gegner
             w_j = enemy_count / total_enemy_units
 
             dmg_vs_target = damage_vs_target(
                 unit,
                 weapons,
-                target
+                target,
+                army_info.weapons
             )
 
             total_damage += count * w_j * dmg_vs_target
@@ -133,8 +83,9 @@ def get_mu_target_aware(a, army_info, enemy):
     return total_damage
 
 def get_army_strength_target_aware(a, b, army_a, army_b):
-    mu_a = get_mu_target_aware(a, army_a, army_b)
-    mu_b = get_mu_target_aware(b, army_b, army_a)
+
+    mu_a = get_mu_target_aware(a, army_a, b, army_b)
+    mu_b = get_mu_target_aware(b, army_b, a, army_a)
 
     return mu_a - mu_b
 
@@ -145,5 +96,164 @@ def get_army_strength_target_aware(a, b, army_a, army_b):
 #
 #------------------------------
 
-def get_synergy(army):
-    pass
+keyword_weights = {
+
+    # =========================
+    # 🧠 Utility / Support
+    # =========================
+
+    ("Psyker", "Infantry"): 1.5,
+    ("Psyker", "Swarm"): 2.0,
+    ("Psyker", "Monster"): 1.0,
+
+    ("Synapse", "Swarm"): 2.5,     # extrem wichtig
+    ("Synapse", "Infantry"): 1.5,
+    ("Synapse", "Monster"): 1.0,
+
+    ("Transport", "Infantry"): 2.0,
+    ("Transport", "Swarm"): 1.5,
+    ("Transport", "Monster"): 0.5,
+
+
+    # =========================
+    # 🪲 Einheitstypen
+    # =========================
+
+    ("Infantry", "Infantry"): 0.5,
+    ("Swarm", "Infantry"): 1.0,
+    ("Monster", "Infantry"): 0.5,
+
+    ("Swarm", "Swarm"): 0.5,
+    ("Monster", "Swarm"): 0.5,
+
+    ("Monster", "Monster"): -0.5,   # Redundanz
+
+
+    # =========================
+    # ⚡ Mobilität
+    # =========================
+
+    ("Fast", "Fast"): 0.5,
+    ("Fast", "Infantry"): 1.0,
+    ("Fast", "Swarm"): 1.5,
+
+    ("Moderate", "Infantry"): 0.5,
+
+    ("Slow", "Slow"): -0.3,
+    ("Slow", "Swarm"): -0.5,
+
+    # Konflikte
+    ("Fast", "Slow"): -1.0,
+    ("Fast", "Moderate"): 0.3,
+
+
+    # =========================
+    # 🕊️ Spezialbewegung
+    # =========================
+
+    ("Fly", "Fast"): 1.5,
+    ("Fly", "Infantry"): 1.0,
+    ("Fly", "Monster"): 1.0,
+
+    ("Burrower", "Fast"): 1.5,
+    ("Burrower", "Infantry"): 1.0,
+    ("Burrower", "Swarm"): 1.0,
+
+    # leichte Konflikte
+    ("Burrower", "Slow"): -0.5,
+
+
+    # =========================
+    # 🔗 Cross Synergies
+    # =========================
+
+    ("Fast", "Psyker"): 1.0,
+    ("Fast", "Synapse"): 1.0,
+
+    ("Swarm", "Synapse"): 2.5,  # nochmal explizit (wichtig!)
+
+    ("Monster", "Psyker"): 1.0,
+}
+
+def get_leader_synergy(army, army_info):
+
+    a = np.array(army)
+    synergy = 0.0
+
+    # Mapping: Name → Index
+    name_to_index = {u["name"]: i for i, u in enumerate(army_info.units_data)}
+
+    for i, count_i in enumerate(a):
+        if count_i == 0:
+            continue
+
+        unit = army_info.units_data[i]
+        leader_targets = unit.get("Leader", [])
+
+        if not leader_targets:
+            continue
+
+        for target_name in leader_targets:
+
+            if target_name not in name_to_index:
+                continue
+
+            j = name_to_index[target_name]
+            count_j = a[j]
+
+            if count_j > 0:
+                # 🔥 Synergy proportional zu Anzahl
+                synergy += 5 * count_i * count_j
+
+    # Normierung (wichtig!)
+    total_units = np.sum(a)
+    if total_units > 1:
+        synergy /= (total_units ** 2)
+
+    return synergy
+
+def get_synergy(army, army_info):
+
+    keyword_score = 0.0
+    leader_score = 0.0
+
+    a = np.array(army)
+    total_units = np.sum(a)
+
+    if total_units <= 1:
+        return 0.0
+
+    # -------------------------
+    # Keyword Synergy (dein Code)
+    # -------------------------
+    for i, count_i in enumerate(a):
+        if count_i == 0:
+            continue
+
+        unit_i = army_info.units_data[i]
+        keywords_i = unit_i.get("Keywords", [])
+
+        for j, count_j in enumerate(a):
+            if count_j == 0:
+                continue
+
+            unit_j = army_info.units_data[j]
+            keywords_j = unit_j.get("Keywords", [])
+
+            for k1 in keywords_i:
+                for k2 in keywords_j:
+
+                    if (k1, k2) in keyword_weights:
+                        keyword_score += count_i * count_j * keyword_weights[(k1, k2)]
+                    elif (k2, k1) in keyword_weights:
+                        keyword_score += count_i * count_j * keyword_weights[(k2, k1)]
+
+    # Normierung
+    keyword_score /= (total_units ** 2)
+
+    # -------------------------
+    # Leader Synergy
+    # -------------------------
+    leader_score = get_leader_synergy(a, army_info)
+
+    return keyword_score + leader_score

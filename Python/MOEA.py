@@ -10,6 +10,7 @@ from pymoo.visualization.scatter import Scatter
 from pymoo.operators.sampling.rnd import IntegerRandomSampling
 from pymoo.operators.crossover.pntx import TwoPointCrossover
 from pymoo.operators.mutation.pm import PM
+from pymoo.operators.crossover.sbx import SBX
 
 from Crossover import MyCrossover
 from Mutation import MyMutation
@@ -81,49 +82,58 @@ class Problem(ElementwiseProblem):
 # ALGORITHM
 # =========================================
 
-def get_algorithm(problem, state=0):
+def get_algorithm(problem, mode="standard", pop_size=70, cx_prob=0.9, mut_prob=0.8):
 
-    sample = MySampling(
-        problem.army_info.cost_vector,
-        problem.army_info.limit_vector,
-        problem.max_cost
-    )
+    n_var = problem.n_var
 
-    repair = MyRepair(
-        problem.army_info.cost_vector,
-        problem.army_info.limit_vector,
-        problem.max_cost
-    )
+    mutation = PM(prob=mut_prob, eta=20)
+    mutation.integer_mask = np.ones(n_var, dtype=bool)
 
-    if state == 0:
-        print("Using custom algorithm")
-        time.sleep(1)
+    # -------------------------
+    # STANDARD (Baseline)
+    # -------------------------
+    if mode == "standard":
 
         return NSGA2(
-            pop_size=70,
-            sampling=sample,
-            crossover=MyCrossover(lambda_factor=0.5),
-            mutation=MyMutation(
-                problem.army_info.cost_vector,
-                problem.army_info.limit_vector,
-                problem.max_cost
-            ),
-            eliminate_duplicates=False
+            pop_size=pop_size,
+            sampling=IntegerRandomSampling(),
+            crossover=SBX(prob=cx_prob, eta=15),
+            mutation=mutation,
+            repair=None,  # 🔥 explizit!
+            eliminate_duplicates=True
         )
 
-    else:
-        print("Using random baseline")
-        time.sleep(1)
-
-        mutation = PM(prob=0.8, eta=20, at_least_once=True)
-        mutation.integer_mask = np.ones(problem.n_var, dtype=bool)
+    # -------------------------
+    # HYBRID OHNE REPAIR
+    # -------------------------
+    elif mode == "hybrid_no_repair":
 
         return NSGA2(
             pop_size=70,
             sampling=IntegerRandomSampling(),
             crossover=TwoPointCrossover(),
             mutation=mutation,
-            repair=repair,
+            repair=None,  # 🔥 explizit!
+            eliminate_duplicates=True
+        )
+
+    # -------------------------
+    # HYBRID MIT REPAIR
+    # -------------------------
+    elif mode == "hybrid_repair":
+
+        repair = MyRepair(
+            problem.army_info.cost_vector,
+            problem.army_info.limit_vector,
+            problem.max_cost
+        )
+
+        return NSGA2(
+            pop_size=70,
+            sampling=IntegerRandomSampling(),
+            crossover=TwoPointCrossover(),
+            mutation=mutation,
+            repair=repair,  # 🔥 nur hier!
             eliminate_duplicates=True
         )
 
